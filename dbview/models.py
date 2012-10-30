@@ -10,7 +10,13 @@ class Test3(models.Model):
     idnum = models.AutoField(primary_key=True)
     fk = models.ForeignKey(Test1View)
     class Meta:
-        db_table = 'test2'    
+        db_table = 'test2'
+            
+class Test4(models.Model):
+    idnum = models.AutoField(primary_key=True)
+    fk = models.ForeignKey(Test3)
+    class Meta:
+        db_table = 'test4'            
          
     
 

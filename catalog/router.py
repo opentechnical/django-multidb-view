@@ -3,13 +3,15 @@ class AuthRouter(object):
     A router to control all database operations on models in the
     auth application.
     """
-#    def db_for_read(self, model, **hints):
-#        """
-#        Attempts to read auth models go to auth_db.
-#        """
-#        if model._meta.app_label == 'auth':
-#            return 'auth_db'
-#        return None
+    def db_for_read(self, model, **hints):
+        """
+        Attempts to read auth models go to auth_db.
+        """
+        if model._meta.app_label == 'catalog':
+            return 'catalog'
+        if model._meta.app_label == 'dbview':
+            return 'catalog'        
+        return None
 #
     def db_for_write(self, model, **hints):
         """
@@ -17,6 +19,8 @@ class AuthRouter(object):
         """
         if model._meta.app_label == 'catalog':
             return 'catalog'
+        if model._meta.app_label == 'dbview':
+            return 'catalog'        
         return None
 
     def allow_relation(self, obj1, obj2, **hints):

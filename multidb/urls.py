@@ -5,6 +5,7 @@ from dbview.api import *
 # admin.autodiscover()
 test1_resource = Test1Resource()
 test2_resource = Test2Resource()
+test4_resource = Test4Resource()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'multidb.views.home', name='home'),
@@ -17,4 +18,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(test1_resource.urls)),
     url(r'^api/', include(test2_resource.urls)),    
+    url(r'^api/', include(test4_resource.urls)),        
 )
